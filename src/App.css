@@ -15,7 +15,7 @@ body, html {
 }
 
 .background-image {
-    background-image: url("./public/images/bg-desktop-light.jpg");
+    background-image: url("/public/images/bg-desktop-light.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
