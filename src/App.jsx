@@ -9,7 +9,7 @@ function App() {
             <div className={"application"}>
                 <div className={"top-panel"}>
                     <div className={"todo-label"}>TODO</div>
-                    <div className={"theme-switch"}><img src="/images/icon-moon.svg" alt=""/></div>
+                    <div className={"theme-switch"}><img src="./public/images/icon-moon.svg" alt=""/></div>
                 </div>
                 <div className={"text-input-container"}>
                     <div className={"checkMark-container"}>
