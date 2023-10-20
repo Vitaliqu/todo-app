@@ -1,4 +1,5 @@
 import './App.css'
+import moonIcon from '../public/images/icon-moon.svg'
 
 function App() {
     let array = []
@@ -9,7 +10,7 @@ function App() {
             <div className={"application"}>
                 <div className={"top-panel"}>
                     <div className={"todo-label"}>TODO</div>
-                    <div className={"theme-switch"}><img src="/public/images/icon-moon.svg" alt=""/></div>
+                    <div className={"theme-switch"}><img src={moonIcon} alt=""/></div>
                 </div>
                 <div className={"text-input-container"}>
                     <div className={"checkMark-container"}>
