@@ -1,59 +1,51 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import moonIcon from '../public/images/icon-moon.svg';
+import sunIcon from '../public/images/icon-sun.svg';
 
 
 function App() {
-    let [size, setSize] = useState(0)
-    const [isAllChecked, setAllChecked] = useState(true);
-    const [isActiveChecked, setActiveChecked] = useState(false);
-    const [isCompletedChecked, setCompletedChecked] = useState(false);
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const [size, setSize] = useState(0)
+    const [createButton, setCreateButton] = useState(false)
+    const createTask = () => {
+        setCreateButton(true)
+        setTimeout(() => setCreateButton(false), 200)
+    }
     const [themeSwitch, setThemeSwitch] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches);
-
+    const [allValues, setAllValues] = useState({
+        All: true,
+        Active: false,
+        Completed: false
+    });
     const changeTheme = () => {
         localStorage.setItem("theme", themeSwitch ? "dark" : "light");
         document.body.classList.toggle("dark-theme");
         setThemeSwitch(!themeSwitch)
     }
 
-
-    const handleAllChange = () => {
-        setAllChecked(true);
-        setActiveChecked(false)
-        setCompletedChecked(false)
-    };
-
-    const handleActiveChange = () => {
-        setActiveChecked(true);
-        setAllChecked(false);
-        setCompletedChecked(false)
-    };
-
-    const handleCompletedChange = () => {
-        setCompletedChecked(true);
-        setAllChecked(false);
-        setActiveChecked(false)
-    };
-
-    let mediaQuery = window.matchMedia("(max-width: 768px)");
-    const filter =
-        <div className={"filter"}>
-            <div className={`filter-all-container`}>
-                <input type={"checkbox"} onChange={handleAllChange} checked={isAllChecked} className={"filter-all"}/>
-                <p className={` ${isAllChecked ? 'checked' : ''}`}>All</p>
+    const filter = () => {
+        const handleChanges = (button) => {
+            setAllValues({
+                All: button === "All",
+                Active: button === "Active",
+                Completed: button === "Completed"
+            });
+        }
+        return (
+            <div className={"filter"}>
+                {Object.keys(allValues).map(element => {
+                    return (
+                        <div key={element} className={`filter-${element}-container`}>
+                            <input type={"checkbox"} onChange={() => handleChanges(element)}
+                                   checked={allValues[element]}
+                                   className={`filter-${element}`}/>
+                            <p className={allValues[element] ? "checked" : ""}>{element}</p>
+                        </div>)
+                })}
             </div>
-            <div className={`filter-active-container `}>
-                <input type={"checkbox"} onChange={handleActiveChange} checked={isActiveChecked}
-                       className={"filter-active"}/>
-                <p className={`${isActiveChecked ? 'checked' : ''}`}>Active</p>
-            </div>
-            <div className={`filter-completed-container`}>
-                <input type={"checkbox"} onChange={handleCompletedChange} checked={isCompletedChecked}
-                       className={"filter-completed"}/>
-                <p className={` ${isCompletedChecked ? 'checked' : ''}`}>Completed</p>
-            </div>
-        </div>
-
+        )
+    }
     useEffect(() => {
         if (themeSwitch) document.body.classList.add("dark-theme");
         else document.body.classList.remove("dark-theme");
@@ -62,7 +54,7 @@ function App() {
     }, [size]);
 
     let array = [];
-    for (let i = 0; i < 12; i++) array.push(i);
+    for (let i = 0; i < 7; i++) array.push(i);
     return (
         <>
             <div className={"background-image"}></div>
@@ -73,32 +65,39 @@ function App() {
                         <input type="checkbox" className={`theme-switch`}
                                onChange={changeTheme}
                                checked={themeSwitch}/>
-                        <img src={moonIcon} alt=""/>
+                        <img className={"moon-icon"} src={moonIcon} alt=""/>
+                        <img className={"sun-icon"} src={sunIcon} alt=""/>
                     </div>
                 </div>
                 <div className={"text-input-container"}>
-                    <div className={"checkMark-container"}>
+                    <div className={`input-checkMark-container ${createButton && "created-task"}`}>
                         <input
-                            className={"check-mark"}
-
+                            className={`input-check-mark`}
                             type="checkbox"
+                            checked={createButton}
+                            onChange={createTask}
                         />
                     </div>
-                    <input className={"text-input"} type="text"/>
+                    <input className={"text-input"} placeholder={`Create a new todo...`} type="text"/>
                 </div>
                 <div className={"task-container"}>
                     <ul className={"task-list"}>
                         {array.map((element) => (
-                            <li key={element}>{element}</li>
+                            <li className={"task"} key={element}>
+                                <div className={"task-checkbox-container"}>
+                                    <input className={"task-checkbox"} type="checkbox"/>
+                                </div>
+                                Jog around the park 3x
+                            </li>
                         ))}
                     </ul>
                     <div className={"navigation-panel"}>
                         <div className={"items-left"}>{array.length} items left</div>
-                        {size === 0 && filter}
+                        {size === 0 && filter()}
                         <div className={"clear-button"}>Clear completed</div>
                     </div>
                 </div>
-                {size === 1 && filter}
+                {size === 1 && filter()}
             </div>
         </>
     );
