@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;700&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap');
 
-* {
-    transition: background 0.3s, transform 0.3s, opacity 0.3s, color 0.3s, background-color 0.3s, outline-color 0.3s, box-shadow 0.3s;
+body, .task-text, .delete-button, .moon-icon, .sun-icon, .input-checkMark-container,  .text-input, .items-left, .clear-button, .filter-buttons, li, .navigation-panel, .task-container, .text-input-container, .background-image::before, .theme-switch-container {
+    transition: background 0.3s, transform 0.3s, opacity 0.3s, color 0.3s, background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 html {
@@ -9,6 +9,7 @@ html {
     display: flex;
     justify-content: center;
 }
+
 
 body, html {
     display: flex;
@@ -18,6 +19,10 @@ body, html {
     min-height: 100vh;
     color: white;
     margin: 0;
+}
+
+.todo-label {
+    color: white;
 }
 
 .background-image {
@@ -37,7 +42,6 @@ body, html {
 }
 
 .background-image::before {
-    transition: opacity 0.3s;
     content: "";
     background-size: cover;
     background-repeat: no-repeat;
@@ -90,7 +94,13 @@ body, html {
     cursor: pointer;
 }
 
-.clear-button:hover {
+@media (hover: hover) {
+    .clear-button:hover {
+        opacity: 0.8;
+    }
+}
+
+.clear-button:active {
     opacity: 1;
 }
 
@@ -161,7 +171,7 @@ body, html {
 }
 
 .task-checkbox-container {
-    border: 1px solid hsl(0, 0%, 90%);;
+    border: 1px solid hsl(0, 0%, 90%);
     flex-shrink: 0;
     width: 1.5rem;
     height: 1.5rem;
@@ -171,7 +181,61 @@ body, html {
     justify-content: center;
     align-items: center;
     position: relative;
+}
 
+
+.task:hover {
+    .delete-button {
+        opacity: 0.3;
+    }
+
+    .delete-button:hover {
+        opacity: 0.6;
+    }
+
+    .delete-button:active {
+        opacity: 1;
+    }
+}
+
+.delete-button {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 4rem;
+    opacity: 0;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 100;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-text {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.task-checkbox-container::before {
+    transition: opacity 0.2s;
+    content: "\2713";
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    margin: 0 1rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
 }
 
 .task-checkbox {
@@ -238,7 +302,6 @@ li {
 .created-task::before {
     opacity: 1;
 }
-
 .navigation-panel {
     flex-shrink: 0;
     box-sizing: border-box;
@@ -257,6 +320,7 @@ li {
 }
 
 .filter {
+    transition: color 0s, background-color 0.3s;
     box-sizing: border-box;
     width: 50%;
     align-items: center;
@@ -304,12 +368,18 @@ li {
 }
 
 p {
+    transition: opacity 0s, color 0s;
     font-weight: 550;
     opacity: 0.5;
+}
 
+.checked-task-text {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 .checked {
+    text-decoration: dashed;
     opacity: 1;
     color: hsl(220, 98%, 61%);
 }
@@ -327,6 +397,16 @@ p {
         border-radius: 3px;
         padding: 0 6rem;
 
+    }
+
+    .task {
+        .delete-button {
+            opacity: 0.3;
+        }
+
+        .delete-button:active {
+            opacity: 1;
+        }
     }
 
     .filter-Active-container {
@@ -349,6 +429,10 @@ p {
 .dark-theme {
     background-color: hsl(235, 21%, 11%);
 
+    .input-checkMark-container {
+        border: 1px solid hsl(0, 0%, 60%);
+
+    }
 
     .theme-switch-container {
         transform: rotate(90deg);
@@ -375,6 +459,10 @@ p {
         color: white;
     }
 
+    .task-checkbox-container {
+        border: 1px solid hsl(0, 0%, 60%);
+    }
+
     .navigation-panel {
         box-shadow: 0 -2px 0 rgb(168, 168, 168);
     }
@@ -383,7 +471,6 @@ p {
         border-bottom-color: rgba(256, 256, 256, 0.6);
         color: hsl(234, 39%, 85%);
     }
-
 
     .items-left, .clear-button {
         color: white;
