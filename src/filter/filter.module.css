@@ -1,0 +1,71 @@
+p {
+    transition: background 0.3s, transform 0.3s, opacity 0.3s, color 0.3s, background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.filter {
+    transition: color 0s, background-color 0.3s;
+    box-sizing: border-box;
+    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+}
+
+.filterAllContainer {
+    position: relative;
+}
+
+.checked {
+    opacity: 1;
+    color: hsl(220, 98%, 61%);
+}
+
+.filterAll {
+    position: absolute;
+}
+
+.filterActiveContainer {
+    position: relative;
+}
+
+.filterActive {
+    position: absolute;
+}
+
+.filterCompletedContainer {
+    position: relative;
+}
+
+.filterCompleted {
+    position: absolute;
+}
+
+.filterAll, .filterActive, .filterCompleted {
+    left: 0;
+    opacity: 0;
+    z-index: 200;
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.filterAll-container, .filterActiveContainer, .filterCompletedContainer {
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    .filter {
+        width: 100%;
+        height: clamp(2rem, 6vh, 3rem);
+        margin-top: clamp(0.5rem, 2vh, 10rem);
+        color: black;
+        font-weight: 400;
+        justify-content: space-evenly;
+        background-color: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        padding: 0 6rem;
+
+    }
+}

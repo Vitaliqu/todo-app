@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import moonIcon from '../public/images/icon-moon.svg';
 import sunIcon from '../public/images/icon-sun.svg';
-import filter from "./filter.jsx";
+import filter from "./filter/filter.jsx";
 
 function App() {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -43,7 +43,7 @@ function App() {
         localStorage.setItem("whiteTheme", JSON.stringify(themeSwitch))
         localStorage.setItem("taskList", JSON.stringify(taskList))
     });
-
+    console.log(allValues)
     return (
         <>
             <div className={"background-image"}></div>
@@ -80,18 +80,17 @@ function App() {
                             requestAnimationFrame(() => element.deleted = false)
                             return (
                                 <li draggable={true} key={index}
+                                    onTransitionEnd={element.deleted ? () => setTaskList(taskList.filter((element, id) => id !== index)) : null}
                                     style={element.deleted ? {
                                         height: 0,
-                                        borderWidth: 0,
                                         overflow: "hidden",
-                                        transition: "height 0.3s, border-width 0.2s"
+                                        transition: "height 0.7s"
                                     } : {opacity: 1}}
                                     className={`task`}>
                                     <div
                                         style={element.deleted ? {
-                                            opacity:"none",
-                                        transition: "opacity 0.3s"
-                                    } : {opacity: 1}}
+                                            color:"red",
+                                        } : {opacity: 1}}
                                         className={`task-checkbox-container ${element.checked ? "created-task" : null}`}>
                                         <input onChange={() => {
                                             const updatedTaskList = [...taskList];
@@ -108,7 +107,6 @@ function App() {
                                         const updatedTaskList = [...taskList];
                                         updatedTaskList[index].deleted = true;
                                         setTaskList(updatedTaskList)
-                                        setTimeout(() => setTaskList(taskList.filter((element, id) => id !== index)), 300)
                                     }} className={"delete-button"}>&#10005;</div>
                                 </li>
                             )
@@ -120,10 +118,10 @@ function App() {
                         {size === 0 && filter(allValues, handleChanges)}
                         <div onClick={() => {
                             setTaskList([...taskList].map(element => {
-                                element.checked ? element.deleted = true: null;
+                                element.checked ? element.deleted = true : null;
                                 return element
                             }))
-                            setTimeout(()=>setTaskList([...taskList].filter(element => !element.checked)),200)
+                            setTimeout(() => setTaskList([...taskList].filter(element => !element.checked)), 200)
                         }} className={"clear-button"}>Clear completed
                         </div>
                     </div>
