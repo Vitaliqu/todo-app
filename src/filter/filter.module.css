@@ -1,23 +1,49 @@
-p {
-    transition: background 0.3s, transform 0.3s, opacity 0.3s, color 0.3s, background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+:root {
+    --text-color: black;
+    --text-opacity: 0.5;
+}
+
+[data-theme='true'] {
+    --text-color: white;
+    --border-color: rgba(256, 256, 256, 0.6);
+
 }
 .filter {
-    transition: color 0s, background-color 0.3s;
+    transition: background-color 0.5s;
     box-sizing: border-box;
     width: 50%;
     align-items: center;
     justify-content: space-evenly;
     display: flex;
     flex-direction: row;
+    font-family: Josefin Sans, serif;
 }
 
 .filterAllContainer {
     position: relative;
 }
 
+.filterLabel {
+    transition: all 0.5s;
+    color:var(--text-color);
+    font-weight: 550;
+    opacity: var(--text-opacity);
+}
+
+.filterLabelDark {
+    font-weight: 550;
+    color: white;
+    opacity: 0.5;
+}
+
 .checked {
     opacity: 1;
     color: hsl(220, 98%, 61%);
+}
+
+
+.filterAll:hover, .filterActive:hover, .filterCompleted:hover {
+    color: red;
 }
 
 .filterAll {
@@ -65,7 +91,8 @@ p {
         background-color: white;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         border-radius: 3px;
-        padding: 0 6rem;
-
+        padding: 0 clamp(0rem, 1vw, 3rem);
     }
+
+
 }

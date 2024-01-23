@@ -3,14 +3,17 @@ import './App.css';
 import moonIcon from '../public/images/icon-moon.svg';
 import sunIcon from '../public/images/icon-sun.svg';
 import filter from "./filter/filter.jsx";
+import navigationPanel from "./navigationPanel/navigationPanel.jsx";
+import taskContainer from "./taskContainer/taskContainer.jsx";
+import Task from "./task/task.jsx";
 
 function App() {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
-    const [size, setSize] = useState(0)
+    const [size, setSize] = useState(false)
     const [createButton, setCreateButton] = useState(false)
     const [input, setInput] = useState('');
     const [themeSwitch, setThemeSwitch] = useState(localStorage.getItem("whiteTheme") ? JSON.parse(localStorage.getItem("whiteTheme")) : window.matchMedia("(prefers-color-scheme: dark)").matches);
-    const [taskList, setTaskList] = useState(localStorage.getItem("taskList") ? JSON.parse(localStorage.getItem("taskList")) : []);
+    const [taskList, setTaskList] = useState(localStorage.getItem("taskList") ? JSON.parse(localStorage.getItem("taskList")).map(element => new Task(element.text, element.checked, element.deleted)) : []);
     const [allValues, setAllValues] = useState({
         All: true,
         Active: false,
@@ -32,18 +35,17 @@ function App() {
         if (!taskList.map(element => element.text).includes(text) && text) {
             setCreateButton(true)
             setInput(``)
-            taskList.unshift({text: text, checked: false, deleted: false})
+            taskList.unshift(new Task(text, false, false))
             setTimeout(() => setCreateButton(false), 200)
         }
     }
     useEffect(() => {
         document.body.classList.toggle('dark-theme', themeSwitch);
-        setSize(mediaQuery.matches ? 1 : 0);
-        mediaQuery.addEventListener("change", () => setSize(mediaQuery.matches ? 1 : 0));
+        setSize(mediaQuery.matches);
+        mediaQuery.addEventListener("change", () => setSize(mediaQuery.matches));
         localStorage.setItem("whiteTheme", JSON.stringify(themeSwitch))
         localStorage.setItem("taskList", JSON.stringify(taskList))
     });
-    console.log(allValues)
     return (
         <>
             <div className={"background-image"}></div>
@@ -74,59 +76,8 @@ function App() {
                            placeholder={`Create a new todo...`}
                            type="text"/>
                 </div>
-                <div className={"task-container"}>
-                    <ul className={"task-list"}>
-                        {(allValues.All ? taskList : allValues.Active ? taskList.filter(element => !element.checked) : taskList.filter(element => element.checked)).map((element, index) => {
-                            requestAnimationFrame(() => element.deleted = false)
-                            return (
-                                <li draggable={true} key={index}
-                                    onTransitionEnd={element.deleted ? () => setTaskList(taskList.filter((element, id) => id !== index)) : null}
-                                    style={element.deleted ? {
-                                        height: 0,
-                                        overflow: "hidden",
-                                        transition: "height 0.7s"
-                                    } : {opacity: 1}}
-                                    className={`task`}>
-                                    <div
-                                        style={element.deleted ? {
-                                            color:"red",
-                                        } : {opacity: 1}}
-                                        className={`task-checkbox-container ${element.checked ? "created-task" : null}`}>
-                                        <input onChange={() => {
-                                            const updatedTaskList = [...taskList];
-                                            updatedTaskList[index].checked = !updatedTaskList[index].checked;
-                                            setTaskList(updatedTaskList)
-                                        }}
-                                               checked={taskList[index].checked}
-                                               className={"task-checkbox"} type="checkbox"/>
-                                    </div>
-                                    <div
-                                        className={`task-text ${element.checked ? "checked-task-text" : null}`}>{element.text}
-                                    </div>
-                                    <div onClick={async () => {
-                                        const updatedTaskList = [...taskList];
-                                        updatedTaskList[index].deleted = true;
-                                        setTaskList(updatedTaskList)
-                                    }} className={"delete-button"}>&#10005;</div>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                    <div className={"navigation-panel"}>
-                        <div className={"items-left"}>{taskList.filter(element => !element.checked).length} items left
-                        </div>
-                        {size === 0 && filter(allValues, handleChanges)}
-                        <div onClick={() => {
-                            setTaskList([...taskList].map(element => {
-                                element.checked ? element.deleted = true : null;
-                                return element
-                            }))
-                            setTimeout(() => setTaskList([...taskList].filter(element => !element.checked)), 200)
-                        }} className={"clear-button"}>Clear completed
-                        </div>
-                    </div>
-                </div>
-                {size === 1 && filter(allValues, handleChanges)}
+                {taskContainer(allValues, taskList, setTaskList, handleChanges, size, themeSwitch)}
+                {size && filter(allValues, handleChanges, themeSwitch)}
             </div>
         </>
     );

@@ -1,0 +1,63 @@
+:root {
+    --text-color: hsl(235, 9%, 35%);
+    --border-color: hsl(0, 0%, 90%);
+
+}
+
+[data-theme='true'] {
+    --text-color: hsl(0, 0%, 100%);
+    --border-color: rgba(256, 256, 256, 0.6);
+
+}
+
+.task {
+    transition: all 0.5s;
+    color: var(--text-color);
+    border-collapse: collapse;
+    flex-shrink: 0;
+    align-items: center;
+    display: flex;
+    height: clamp(2.5rem, 8vh, 4rem);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.task:hover {
+    .deleteButton {
+        opacity: 0.3;
+    }
+
+    .deleteButton:hover {
+        opacity: 0.6;
+    }
+
+    .deleteButton:active {
+        opacity: 1;
+    }
+}
+
+.deleteButton {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 4rem;
+    opacity: 0;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 100;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .task {
+        .deleteButton {
+            opacity: 0.3;
+        }
+
+        .deleteButton:active {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.navigationPanel {
+    z-index: 100;
+    border-top: 1px solid hsl(0, 0%, 90%);
+    font-family: Josefin Sans, serif;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0 1rem;
+    font-weight: 400;
+    height: clamp(2rem, 6dvh, 3rem);
+    text-align: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.itemsLeft {
+    transition: color 0.5s, opacity 0.5s;
+    opacity: 0.5;
+    user-select: none;
+}
+
+.clearButton {
+    transition: color 0.5s, opacity 0.5s;
+    user-select: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.clearButton:hover {
+    opacity: 0.8;
+}
+
+
+.clearButton:active {
+    opacity: 1;
+}

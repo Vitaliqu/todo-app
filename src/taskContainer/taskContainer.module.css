@@ -1,0 +1,13 @@
+.taskContainer {
+    transition: background-color 0.5s;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    margin-top: clamp(0.5rem, 3vh, 1.5rem);
+    height: 55vh;
+    border-radius: 6px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
