@@ -149,58 +149,7 @@ body, html {
     cursor: pointer;
 }
 
-.task-checkbox-container {
-    border: 1px solid hsl(0, 0%, 90%);
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0 1rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
 
-
-
-
-
-.task-text {
-    overflow: scroll;
-    display: flex;
-    font-size: clamp(0.1rem, 8vh, 1.5rem);
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-.task-text::-webkit-scrollbar {
-    display: none;
-}
-.task-checkbox-container::before {
-    transition: opacity 0.2s;
-    content: "\2713";
-    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
-    margin: 0 1rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    opacity: 0;
-}
-
-.task-checkbox {
-    cursor: pointer;
-    opacity: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .text-input {
     height: 100%;
@@ -217,17 +166,6 @@ body, html {
     outline: none;
 }
 
-
-.task-list {
-    margin: 0;
-    list-style-type: none;
-    color: black;
-    padding: 0;
-    overflow: auto;
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-}
 
 .task-list::-webkit-scrollbar {
     display: none;

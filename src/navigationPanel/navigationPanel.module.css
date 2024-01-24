@@ -11,7 +11,7 @@
     font-size: 0.85rem;
     padding: 0 1rem;
     font-weight: 400;
-    height: clamp(2rem, 6dvh, 3rem);
+    height: 3rem;
     text-align: center;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -25,6 +25,7 @@
 
 .clearButton {
     transition: color 0.5s, opacity 0.5s;
+    color: var(--text-color);
     user-select: none;
     cursor: pointer;
     opacity: 0.5;

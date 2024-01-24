@@ -3,7 +3,6 @@ import './App.css';
 import moonIcon from '../public/images/icon-moon.svg';
 import sunIcon from '../public/images/icon-sun.svg';
 import filter from "./filter/filter.jsx";
-import navigationPanel from "./navigationPanel/navigationPanel.jsx";
 import taskContainer from "./taskContainer/taskContainer.jsx";
 import Task from "./task/task.jsx";
 
