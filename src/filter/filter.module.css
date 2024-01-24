@@ -1,12 +1,12 @@
 :root {
-    --text-color: black;
-    --border-color: hsl(0, 0%, 90%);
+    --text-color: hsl(235, 19%, 35%);
+    --border-color: hsl(236, 33%, 92%);
     --background-color: white;
 }
 
 [data-theme='true'] {
-    --text-color: white;
-    --border-color: hsl(0, 0%, 90%);
+    --text-color: hsl(234, 39%, 85%);
+    --border-color: hsl(235, 19%, 35%);
     --background-color: hsl(235, 24%, 19%);
 }
 
@@ -49,9 +49,8 @@
 @media (max-width: 768px) {
     .filter {
         width: 100%;
-        height: clamp(2rem, 6vh, 3rem);
-        margin-top: clamp(0.5rem, 2vh, 10rem);
-        color: black;
+        height: 4rem;
+        margin-top: 1rem;
         font-weight: 400;
         justify-content: space-evenly;
         background-color: var(--background-color);

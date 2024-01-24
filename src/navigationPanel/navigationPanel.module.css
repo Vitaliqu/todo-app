@@ -1,9 +1,10 @@
 .navigationPanel {
     z-index: 100;
-    border-top: 1px solid hsl(0, 0%, 90%);
+    box-shadow: 0 0 0 1px var(--border-color);
+    border-collapse: collapse;
     font-family: Josefin Sans, serif;
     flex-shrink: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
     display: flex;
     justify-content: space-between;
     color: black;
@@ -11,7 +12,7 @@
     font-size: 0.85rem;
     padding: 0 1rem;
     font-weight: 400;
-    height: 3rem;
+    height: 4rem;
     text-align: center;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;

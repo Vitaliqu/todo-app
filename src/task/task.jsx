@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./task.module.css"
+import checkmark from "../../public/images/checkmark.svg"
 
 const deleteStyle = {
     height: 0,
@@ -22,8 +23,11 @@ class Task {
                    style={this.deleted ? deleteStyle : {opacity: 1}}
                    className={styles.task}
                    data-theme={theme}>
-            <div className={styles.taskCheckboxContainer}>
-                <p className={styles.createdTask} style={this.checked ? {opacity: 1} : null}>&#10003;</p>
+            <div className={styles.taskCheckboxContainer} style={this.checked ? {
+                background: "linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))", border: "none"
+            } : null}>
+                <img src={checkmark}
+                     className={styles.createdTask} style={this.checked ? {opacity: 1} : null} alt={null}/>
                 <input checked={this.checked}
                        className={styles.taskCheckbox}
                        type="checkbox"

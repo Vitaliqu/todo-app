@@ -108,7 +108,7 @@ body, html {
     display: flex;
     border-radius: 6px;
     overflow: hidden;
-    height: clamp(2.5rem, 8vh, 4rem);
+    height: 4rem;
     flex-direction: row;
     background-color: white;
 }
@@ -152,12 +152,13 @@ body, html {
 
 
 .text-input {
+    width: 100%;
     height: 100%;
     color: hsl(235, 19%, 35%);
     font-family: Josefin Sans, serif;
     border: none;
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: 1rem;
     display: flex;
     caret-color: hsl(220, 98%, 61%);;
 }
