@@ -59,9 +59,10 @@ function App() {
                         <img className={"sun-icon"} src={sunIcon} alt=""/>
                     </div>
                 </div>
-                <div className={"text-input-container"}>
-                    <div className={`input-checkMark-container ${createButton && "created-task"}`}>
+                <div data-theme={themeSwitch} className={"text-input-container"}>
+                    <div data-theme={themeSwitch} className={`input-checkMark-container ${createButton && "created-task"}`}>
                         <input
+                            data-theme={themeSwitch}
                             className={`input-check-mark`}
                             type="checkbox"
                             checked={createButton}

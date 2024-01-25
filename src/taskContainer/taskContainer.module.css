@@ -4,7 +4,7 @@
     width: 100%;
     display: flex;
     overflow: hidden;
-    margin-top: clamp(0.5rem, 3vh, 1.5rem);
+    margin-top: 1.5rem;
     height: auto;
     border-radius: 6px;
     flex-direction: column;
@@ -18,7 +18,7 @@
     scroll-behavior: smooth;
     scroll-snap-type: y proximity;
     list-style-type: none;
-    height: 24rem;
+    height: 36rem;
     color: black;
     padding: 0;
     overflow: auto;
@@ -33,25 +33,49 @@
     display: none;
 }
 
+@media (max-height: 1040px) {
+    .taskList {
+        height: 32rem;
+    }
+}
+
+@media (max-height: 960px) {
+    .taskList {
+        height: 28rem;
+    }
+}
+
+@media (max-height: 880px) {
+    .taskList {
+        height: 24rem;
+    }
+}
+
 @media (max-height: 800px) {
     .taskList {
-        height: 16rem;
+        height: 20rem;
     }
 }
 
 @media (max-height: 720px) {
     .taskList {
-        height: 12rem;
+        height: 16rem;
     }
 }
 
 @media (max-height: 640px) {
     .taskList {
-        height: 8rem;
+        height: 12rem;
     }
 }
 
 @media (max-height: 560px) {
+    .taskList {
+        height: 8rem;
+    }
+}
+
+@media (max-height: 480px) {
     .taskList {
         height: 4rem;
     }

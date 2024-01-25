@@ -13,13 +13,16 @@ body, html {
     min-height: 100dvh;
     color: white;
     margin: 0;
+    transition: background-color 0.5s;
+
 }
 
-.todo-label, .text-input, .task-text{
+.todo-label, .text-input, .task-text {
     font-family: Josefin Sans, serif;
 }
 
 .todo-label {
+    font-size: clamp(1.5rem, 4dvh, 2rem);
     color: white;
 
 }
@@ -35,12 +38,13 @@ body, html {
     top: 0;
     width: 100vw;
     opacity: 1;
-    height: clamp(0px, 48vh, 300px);
+    height: clamp(0px, 32dvh, 300px);
     justify-content: center;
     align-items: center;
 }
 
 .background-image::before {
+    transition: opacity 0.5s;
     content: "";
     background-size: cover;
     background-repeat: no-repeat;
@@ -50,7 +54,7 @@ body, html {
     left: 0;
     top: 0;
     width: 100vw;
-    height: clamp(0px, 48vh, 300px);
+    height: clamp(0px, 32dvh, 300px);
     justify-content: center;
     align-items: center;
     background-image: url("../public/images/bg-desktop-dark.jpg");
@@ -76,14 +80,17 @@ body, html {
 }
 
 .theme-switch-container {
+    transition: all 0.5s;
     position: relative;
 }
-
+.moon-icon {
+    transition: opacity 0.5s;
+}
 .sun-icon {
+    transition: opacity 0.5s;
     position: absolute;
     opacity: 0;
 }
-
 
 
 .application {
@@ -102,6 +109,7 @@ body, html {
 }
 
 .text-input-container {
+    transition: background-color 0.5s;
     align-items: center;
     margin-top: clamp(0rem, 5vh, 3rem);
     display: flex;
@@ -109,17 +117,20 @@ body, html {
     overflow: hidden;
     height: 4rem;
     flex-direction: row;
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 .input-checkMark-container {
-    border: 1px solid hsl(0, 0%, 90%);;
+    transition: border-color 0.5s;
+    border: 1px solid var(--border-color);
     flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0 1rem;
+    text-align: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0 1rem 0 1.5rem;
     border-radius: 50%;
     display: flex;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -149,17 +160,17 @@ body, html {
 }
 
 
-
 .text-input {
+    transition: background-color 0.5s, color 0.5s;
     width: 100%;
     height: 100%;
-    color: hsl(235, 19%, 35%);
+    color: var(--text-color);
     font-family: Josefin Sans, serif;
     border: none;
     font-weight: 400;
     font-size: 1rem;
     display: flex;
-    caret-color: hsl(220, 98%, 61%);;
+    background-color: var(--background-color);
 }
 
 .text-input:focus {
@@ -177,7 +188,6 @@ body, html {
 }
 
 
-
 .checked-task-text {
     text-decoration: line-through;
     opacity: 0.5;
@@ -192,11 +202,6 @@ body, html {
 
 .dark-theme {
     background-color: hsl(235, 21%, 11%);
-
-    .input-checkMark-container {
-        border: 1px solid hsl(0, 0%, 60%);
-
-    }
 
     .theme-switch-container {
         transform: rotate(90deg);
@@ -213,12 +218,6 @@ body, html {
     .background-image::before {
         opacity: 1;
     }
-
-    .text-input-container, .text-input, .task-container {
-        color: hsl(234, 39%, 85%);
-        background-color: hsl(235, 24%, 19%)
-    }
-
 
     .task-checkbox-container {
         border: 1px solid hsl(0, 0%, 60%);
