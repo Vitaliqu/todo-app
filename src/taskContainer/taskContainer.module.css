@@ -35,28 +35,23 @@
 
 @media (max-height: 800px) {
     .taskList {
-        height: 20rem;
+        height: 16rem;
     }
 }
 
 @media (max-height: 720px) {
     .taskList {
-        height: 16rem;
+        height: 12rem;
     }
 }
 
 @media (max-height: 640px) {
     .taskList {
-        height: 12rem;
+        height: 8rem;
     }
 }
 
 @media (max-height: 560px) {
-    .taskList {
-        height: 8rem;
-    }
-}
-@media (max-height: 480px) {
     .taskList {
         height: 4rem;
     }
