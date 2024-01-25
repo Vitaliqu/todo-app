@@ -19,7 +19,7 @@ class Task {
 
     construction = (taskList, setTaskList, theme) => {
         return <li key={this.text}
-                   onTransitionEnd={this.deleted ? () => this.deleteTask(setTaskList) : null}
+                   onTransitionEnd={this.deleted ? (transition) => transition.propertyName === "height" ? this.deleteTask(setTaskList) : null : null}
                    style={this.deleted ? deleteStyle : {opacity: 1}}
                    className={styles.task}
                    data-theme={theme}>
