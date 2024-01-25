@@ -38,7 +38,7 @@ body, html {
     top: 0;
     width: 100vw;
     opacity: 1;
-    height: clamp(0px, 32dvh, 300px);
+    height: clamp(0px, 36dvh, 300px);
     justify-content: center;
     align-items: center;
 }
@@ -54,7 +54,7 @@ body, html {
     left: 0;
     top: 0;
     width: 100vw;
-    height: clamp(0px, 32dvh, 300px);
+    height: clamp(0px, 36dvh, 300px);
     justify-content: center;
     align-items: center;
     background-image: url("../public/images/bg-desktop-dark.jpg");
