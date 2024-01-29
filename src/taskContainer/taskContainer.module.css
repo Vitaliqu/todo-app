@@ -8,20 +8,29 @@
     height: 32rem;
     border-radius: 6px;
     flex-direction: column;
-    border-collapse: collapse;
     justify-content: start;
     position: relative;
     background-color: var(--background-color);
+}
+.taskContainer::after {
+    transition: background-color 0.5s;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    background-color: var(--background-color);
+    bottom: calc(100% - 1px);
 }
 
 .taskList {
     position: absolute;
     left: 0;
-    top: -1px;
+    top: 0;
     right: 0;
     bottom: 0;
     margin-top: 0;
-    margin-bottom: calc(4rem + 3px);
+    margin-bottom: calc(4rem);
     scroll-behavior: smooth;
     scroll-snap-type: y proximity;
     padding: 0;

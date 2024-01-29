@@ -76,6 +76,7 @@ function App() {
                            placeholder={`Create a new todo...`}
                            type="text"/>
                 </div>
+                <taskContainer allValues={allValues} taskList={taskList} setTaskList/>
                 {taskContainer(allValues, taskList, setTaskList, handleChanges, size, themeSwitch)}
                 {size && filter(allValues, handleChanges, themeSwitch)}
             </div>
