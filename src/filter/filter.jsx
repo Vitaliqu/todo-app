@@ -6,17 +6,19 @@ const selectedStyle = {
 }
 const filter = (allValues, handleChanges, theme) => {
     const createButton = (label) => {
-        return <div onClick={() => handleChanges(label)} key={label} className={styles.filterContainer}>
-                <input type={"checkbox"} className={styles.filterCheckbox}/>
-                <p className={styles.filterLabel} style={allValues[label] ? selectedStyle : null}
+        return (
+            <div className={styles.filterContainer} key={label} onClick={() => handleChanges(label)}>
+                <input className={styles.filterCheckbox} type={"checkbox"}/>
+                <p className={styles.filterLabel} style={allValues[label] ? selectedStyle : {}}
                    data-theme={theme}>{label}</p>
-            </div>
+            </div>)
     }
-    return <div className={styles.filter} data-theme={theme}>
-        {createButton(`All`)}
-        {createButton(`Active`)}
-        {createButton(`Completed`)}
-    </div>
+    return (
+        <div className={styles.filter} data-theme={theme}>
+            {createButton(`All`)}
+            {createButton(`Active`)}
+            {createButton(`Completed`)}
+        </div>)
 }
 
 export default filter

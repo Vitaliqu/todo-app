@@ -1,0 +1,79 @@
+.textInputContainer {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.5s;
+    align-items: center;
+    margin-top: clamp(0rem, 5vh, 3rem);
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 4rem;
+    flex-direction: row;
+    background-color: var(--background-color);
+}
+
+.inputCheckMarkContainer {
+    transition: border-color 0.5s;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+    text-align: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0 1rem 0 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.gradient {
+    transition: opacity 0.2s;
+    content: "\2713";
+    position: absolute;
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    flex-shrink: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.createdTask {
+    transition: opacity 0.2s;
+    scale: 0.5;
+    width: 100%;
+    color: white;
+    height: 100%;
+    filter: invert(1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+}
+.inputCheckMark {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.textInput {
+    transition: background-color 0.5s, color 0.5s;
+    width: 100%;
+    height: 100%;
+    color: var(--text-color);
+    font-family: Josefin Sans, serif;
+    border: none;
+    font-weight: 400;
+    font-size: 1rem;
+    display: flex;
+    background-color: var(--background-color);
+}
+
+.textInput:focus {
+    outline: none;
+}

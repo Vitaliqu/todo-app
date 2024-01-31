@@ -1,0 +1,44 @@
+.topPanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    font-weight: 600;
+    flex-direction: row;
+}
+
+.todoLabel {
+    font-family: Josefin Sans, serif;
+    font-size: clamp(1.5rem, 4dvh, 2rem);
+    color: white;
+}
+
+.themeSwitchContainer {
+    transition: all 0.5s;
+    position: relative;
+    display: flex;
+}
+
+.themeSwitch {
+    position: absolute;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+.moonIcon {
+    transition: opacity 0.5s;
+}
+
+.sunIcon {
+    transition: opacity 0.5s;
+    position: absolute;
+    opacity: 0;
+}

@@ -1,5 +1,5 @@
 .navigationPanel {
-    transition: box-shadow 0.5s;
+    transition: border-top-color 0.5s;
     z-index: 100;
     border-top: 1px solid var(--border-color);
     border-collapse: collapse;
@@ -11,9 +11,9 @@
     color: black;
     align-items: center;
     font-size: 0.85rem;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     font-weight: 400;
-    height: 4rem;
+    height: calc(4rem + 1px);
     text-align: center;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;

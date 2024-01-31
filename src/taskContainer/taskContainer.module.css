@@ -5,7 +5,7 @@
     display: flex;
     overflow: hidden;
     margin-top: 1.5rem;
-    height: 32rem;
+    height: 40rem;
     border-radius: 6px;
     flex-direction: column;
     justify-content: start;
@@ -20,7 +20,7 @@
     top:0;
     right: 0;
     background-color: var(--background-color);
-    bottom: calc(100% - 1px);
+    bottom: calc(100% - 2px);
 }
 
 .taskList {
